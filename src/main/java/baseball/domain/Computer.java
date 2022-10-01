@@ -15,6 +15,10 @@ public class Computer {
     public Computer() {
         this.answer = makeAnswer();
         this.score = new Score();
+
+        for (int i : answer) {
+            System.out.print(i + " ");
+        }
     }
 
     public Score compareAnswers(final List<Integer> playerNumbers) {
@@ -29,13 +33,13 @@ public class Computer {
     }
 
     private void countStrike(final int number, final int index) {
-        if (answer.contains(number) && answer.indexOf(index) == number){
+        if (answer.contains(number) && answer.indexOf(number) == index){
             score.countStrike();
         }
     }
 
     private void countBall(final int number, final int index) {
-        if (answer.contains(number) && answer.indexOf(index) != number){
+        if (answer.contains(number) && answer.indexOf(number) != index){
             score.countBall();
         }
     }
