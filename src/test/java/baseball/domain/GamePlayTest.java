@@ -13,7 +13,7 @@ class GamePlayTest {
         GamePlay gamePlay = new GamePlay();
 
         assertThatIllegalArgumentException()
-                .isThrownBy(() -> gamePlay.addToPlayerNumbers("abc"));
+                .isThrownBy(() -> gamePlay.initPlayerNumbers("abc"));
     }
 
     @Test
@@ -22,7 +22,7 @@ class GamePlayTest {
         GamePlay gamePlay = new GamePlay();
 
         assertThatIllegalArgumentException()
-                .isThrownBy(() -> gamePlay.addToPlayerNumbers("012"));
+                .isThrownBy(() -> gamePlay.initPlayerNumbers("012"));
     }
 
     @Test
@@ -31,6 +31,6 @@ class GamePlayTest {
         GamePlay gamePlay = new GamePlay();
 
         assertThatIllegalArgumentException()
-                .isThrownBy(() -> gamePlay.addToPlayerNumbers("122"));
+                .isThrownBy(() -> gamePlay.initPlayerNumbers("122"));
     }
 }

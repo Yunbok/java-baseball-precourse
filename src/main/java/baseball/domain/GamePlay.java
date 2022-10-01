@@ -11,8 +11,11 @@ public class GamePlay {
     private final List<Integer> playerNumbers = new LinkedList<>();
     private final Set<Integer> playerNumberSet = new HashSet<>();
 
-    public void addToPlayerNumbers(final String playerInput) {
+    public List<Integer> initPlayerNumbers(final String playerInput) {
         String[] splitInput = playerInput.split("");
+
+        clearPlayerNumbers();
+
         for (String input : splitInput) {
             Integer inputNumber = changeToInteger(input);
             playerNumbers.add(inputNumber);
@@ -20,6 +23,13 @@ public class GamePlay {
         }
 
         validationCheck();
+
+        return playerNumbers;
+    }
+
+    private void clearPlayerNumbers() {
+        playerNumbers.clear();
+        playerNumberSet.clear();
     }
 
     private void validationCheck() {
