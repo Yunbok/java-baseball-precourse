@@ -8,5 +8,4 @@ public class Player {
         return Console.readLine();
     }
 
-
 }
