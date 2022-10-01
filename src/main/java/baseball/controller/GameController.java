@@ -17,10 +17,18 @@ public class GameController {
         Player player = new Player();
         GamePlay gamePlay = new GamePlay();
 
-        ConsoleInput.inputMessage();
-        List<Integer> playerNumbers = gamePlay.initPlayerNumbers(player.inputNumber());
-        Score score = computer.compareAnswers(playerNumbers);
-        ConsoleOutput.printResult(score.getScoreMessage());
+        while (true) {
+
+            ConsoleInput.inputMessage();
+            List<Integer> playerNumbers = gamePlay.initPlayerNumbers(player.inputNumber());
+            Score score = computer.compareAnswers(playerNumbers);
+            ConsoleOutput.printResult(score.getScoreMessage());
+
+            if (score.isWin()) {
+                break;
+            }
+        }
+
 
     }
 }
