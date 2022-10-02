@@ -2,6 +2,8 @@ package baseball.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -32,5 +34,14 @@ class GamePlayTest {
 
         assertThatIllegalArgumentException()
                 .isThrownBy(() -> gamePlay.initPlayerNumbers("122"));
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"abc", "012", "122"})
+    void illegalArgumentException_all_test(String playerInput) {
+        GamePlay gamePlay = new GamePlay();
+
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> gamePlay.initPlayerNumbers(playerInput));
     }
 }

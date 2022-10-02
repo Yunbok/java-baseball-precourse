@@ -8,14 +8,14 @@ import static org.junit.jupiter.api.Assertions.*;
 class ScoreTest {
 
     @Test
-    @DisplayName("스트라이크 카운트 증가 테스트")
+    @DisplayName("스트라이크 카운트 1 증가 테스트")
     void countStrike_test() {
         //given
         Score score = new Score();
         //when
         score.countStrike();
         //then
-        assertEquals(1, score.getStrike());
+        assertEquals(1, score.getStrike(), () -> "countStrike 메서드가 한번 호출되었지만 값이 1이상 올라감.");
 
     }
 
@@ -28,7 +28,7 @@ class ScoreTest {
         //when
 
         //then
-        assertTrue(score.isNothing());
+        assertTrue(score.isNothing(), () -> "볼과 스트라이크가 0이지만 낫싱이 false 를 반환");
 
     }
 
@@ -41,20 +41,20 @@ class ScoreTest {
         score.countStrike();
         score.countStrike();
 
-        assertTrue(score.isWin());
-        assertEquals(score.getScoreMessage(), "3 스트라이크");
+        assertTrue(score.isWin(), () -> "스트라이크 카운트가 3번 증가 했지만 승리하지 못함.");
+        assertEquals(score.getScoreMessage(), "3스트라이크");
 
     }
 
     @Test
-    @DisplayName("볼 카운트 증가 테스트")
+    @DisplayName("볼 카운트 1 증가 테스트")
     void countBall_test() {
         //given
         Score score = new Score();
         //when
         score.countBall();
         //then
-        assertEquals(1, score.getBall());
+        assertEquals(1, score.getBall(), () -> "countBall 메서드가 한번 호출되었지만 값이 1이상 올라감.");
 
     }
 
@@ -66,9 +66,25 @@ class ScoreTest {
         //when
         score.countBall();
         //then
-        assertEquals(1, score.getBall());
-        assertFalse(score.isNothing());
-        assertFalse(score.isWin());
+        assertAll(() -> {
+            assertTrue(score.getBall() > 0);
+            assertFalse(score.isNothing());
+            assertFalse(score.isWin());
+        });
 
+    }
+
+    @Test
+    @DisplayName("1볼일때 메세지 테스트")
+    void scoreMessage_test() {
+        //given
+        Score score = new Score();
+        //when
+        score.countBall();
+        //then
+        assertAll(() -> {
+            assertEquals(1, score.getBall());
+            assertEquals(score.getScoreMessage(), "1볼");
+        });
     }
 }
