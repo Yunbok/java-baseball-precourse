@@ -5,6 +5,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
+import static baseball.constant.ExceptionMessage.*;
+import static baseball.constant.GameConfig.ANSWER_SIZE;
 import static baseball.view.ConsoleInput.*;
 import static baseball.view.ConsoleOutput.*;
 
@@ -69,17 +71,17 @@ public class GamePlay {
         validateDuplicate();
     }
 
-    private Integer changeToInteger(final String input) throws NumberFormatException {
+    private Integer changeToInteger(final String input) {
         try {
             return Integer.parseInt(input);
         } catch (NumberFormatException ex) {
-            throw new IllegalArgumentException("숫자를 입력해 주세요.");
+            throw new IllegalArgumentException(INVALID_NUMBER);
         }
     }
 
     private void validateLength() {
-        if (playerNumbers.size() != 3 ) {
-            throw new IllegalArgumentException("숫자를 3개 입력하셔야 합니다.");
+        if (playerNumbers.size() != ANSWER_SIZE ) {
+            throw new IllegalArgumentException(INVALID_LENGTH);
         }
     }
 
@@ -91,13 +93,13 @@ public class GamePlay {
 
     private void checkNumberRange(final Integer number) {
         if (!(1 <= number && 9 >= number)) {
-            throw new IllegalArgumentException("1 ~ 9 안의 숫자를 입력해주세요.");
+            throw new IllegalArgumentException(INVALID_INPUT);
         }
     }
 
     private void validateDuplicate() {
         if (playerNumberSet.size() != playerNumbers.size()) {
-            throw new IllegalArgumentException("중복된 숫자를 입력하셨습니다.");
+            throw new IllegalArgumentException(INVALID_DUPLICATE);
         }
     }
 
@@ -108,6 +110,6 @@ public class GamePlay {
         if (number == 2) {
             return false;
         }
-        throw new IllegalArgumentException("잘못된 숫자를 입력하셨습니다.");
+        throw new IllegalArgumentException(INVALID_RESTART_INPUT);
     }
 }

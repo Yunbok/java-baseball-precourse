@@ -1,6 +1,7 @@
 package baseball.domain;
 
-import static baseball.constant.GameConfig.ANSWER_SIZE;
+
+import static baseball.constant.GameConfig.*;
 
 public class Score {
 
@@ -33,18 +34,17 @@ public class Score {
 
     public String getScoreMessage() {
         if (isNothing()) {
-            return "낫싱";
+            return NOTHING_STR;
         }
         if (this.ball > 0 && this.strike == 0) {
-            return this.ball + " 볼";
+            return String.format(BALL_STR, this.ball);
         }
         if (this.ball == 0 && this.strike > 0) {
-            return this.strike + " 스트라이크";
+            return String.format(STRIKE_STR, this.strike);
         }
-        if (this.ball > 0 && this.strike > 0) {
-            return this.ball + " 볼 " + this.strike + " 스트라이크";
-        }
-        return null;
+
+        return String.format(BALL_STRIKE_STR, ball, strike);
+
     }
 
     public void initScore() {
