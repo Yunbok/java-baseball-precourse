@@ -2,7 +2,6 @@ package baseball.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static baseball.constant.GameConfig.*;
@@ -16,9 +15,6 @@ public class Computer {
         this.answer = makeAnswer();
         this.score = new Score();
 
-        for (int i : answer) {
-            System.out.print(i + " ");
-        }
     }
 
     public Score compareAnswers(final List<Integer> playerNumbers) {

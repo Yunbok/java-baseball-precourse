@@ -1,34 +1,16 @@
 package baseball.controller;
 
-import baseball.domain.Computer;
 import baseball.domain.GamePlay;
-import baseball.domain.Player;
-import baseball.domain.Score;
-import baseball.view.ConsoleInput;
-import baseball.view.ConsoleOutput;
-
-import java.util.List;
 
 public class GameController {
 
     public static void start() {
+        boolean nextGame = true;
 
-        Computer computer = new Computer();
-        Player player = new Player();
-        GamePlay gamePlay = new GamePlay();
-
-        while (true) {
-
-            ConsoleInput.inputMessage();
-            List<Integer> playerNumbers = gamePlay.initPlayerNumbers(player.inputNumber());
-            Score score = computer.compareAnswers(playerNumbers);
-            ConsoleOutput.printResult(score.getScoreMessage());
-
-            if (score.isWin()) {
-                break;
-            }
+        while (nextGame) {
+            GamePlay gamePlay = new GamePlay();
+            nextGame = gamePlay.play();
         }
-        ConsoleOutput.printResult("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
 
     }
 }
