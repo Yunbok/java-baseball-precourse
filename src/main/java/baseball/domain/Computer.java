@@ -2,7 +2,7 @@ package baseball.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.List;
+import java.util.*;
 
 import static baseball.constant.GameConfig.*;
 
@@ -41,7 +41,11 @@ public class Computer {
     }
 
    private List<Integer> makeAnswer() {
-        return Randoms.pickUniqueNumbersInRange(MIN_NUMBER, MAX_NUMBER, ANSWER_SIZE);
+        Set<Integer> answer = new HashSet<>();
+        while (answer.size() != ANSWER_SIZE) {
+            answer.add(Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER));
+        }
+        return new ArrayList<>(answer);
     }
 
 }
