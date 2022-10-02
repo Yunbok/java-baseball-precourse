@@ -1,5 +1,7 @@
 package baseball.view;
 
+import static baseball.constant.GameConfig.END_GAME_MESSAGE;
+
 public class ConsoleOutput {
 
     private ConsoleOutput() {
@@ -11,6 +13,6 @@ public class ConsoleOutput {
     }
 
     public static void printGameEndMessage() {
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println(END_GAME_MESSAGE);
     }
 }

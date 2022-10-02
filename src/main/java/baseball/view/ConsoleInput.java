@@ -1,12 +1,15 @@
 package baseball.view;
 
+import static baseball.constant.GameConfig.NUMBER_INPUT_MESSAGE;
+import static baseball.constant.GameConfig.RESTART_INPUT_MESSAGE;
+
 public class ConsoleInput {
 
     public static void inputMessage() {
-        System.out.print("숫자를 입력해주세요 :");
+        System.out.print(NUMBER_INPUT_MESSAGE);
     }
 
     public static void restartInputMessage() {
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        System.out.println(RESTART_INPUT_MESSAGE);
     }
 }
